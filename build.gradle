@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '3.9.8'
+}
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+group 'com.petstore'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.3'
+    testImplementation 'org.junit.platform:junit-platform-suite:1.9.3'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.3'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.2.3'
+    testImplementation 'net.serenity-bdd:serenity-core:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-junit5:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-cucumber:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-rest-assured:3.9.8'
+    testImplementation 'net.serenity-bdd:serenity-ensure:3.9.8'
+    testImplementation 'ch.qos.logback:logback-classic:1.4.11'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+clean {
+    delete "${rootDir}/target"
+}
+
+test.finalizedBy(aggregate)
