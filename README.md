@@ -36,7 +36,7 @@ The project follows the standard directory structure used in most Serenity proje
 - Run all test :
     - ``./gradlew clean test``
     - This will run all the feature file.
-    - Or you can run it from CucumberTestSuite class also.
+    - Or you can run it from CucumberTestRunner class also.
 - Run specific tags :
     - ``./gradlew clean test -Dcucumber.filter.tags="@tag-name"``
     - This will run the scenario that has the mentioned tags.
