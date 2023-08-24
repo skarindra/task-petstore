@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -102,5 +103,15 @@ public class MainStepDefinition {
     public void petWithIdIsDeleted(String arg0) {
         DataUtils.getResponse().then().assertThat().statusCode(200);
         DataUtils.getResponse().then().assertThat().body("message", Matchers.equalTo(arg0));
+    }
+
+    @Then("list of pets will be blank")
+    public void listOfPetsWillBeBlank() {
+        DataUtils.getResponse().then().assertThat().body(Matchers.equalTo("[]"));
+    }
+
+    @Then("status code will be {int}")
+    public void statusCodeWillBe(int arg0) {
+        DataUtils.getResponse().then().assertThat().statusCode(arg0);
     }
 }
