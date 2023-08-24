@@ -12,6 +12,11 @@ Feature: Petstore
     | pending   |
     | sold      |
 
+  @get-pet-invalid-status
+  Scenario: GET pets by invalid status
+    Given user sends GET request with param "/pet/findByStatus?status=notavail"
+    Then list of pets will be blank
+
   @post-pet
   Scenario: POST new pet
     Given user sends POST request "/pet" with body:
@@ -90,3 +95,8 @@ Feature: Petstore
     """
     When user sends DELETE request "/pet/3333"
     Then pet with id "3333" is deleted
+
+  @delete-nonexistent-pet
+  Scenario: Delete nonexistent pet
+    Given user sends DELETE request "/pet/987972"
+    Then status code will be 404
