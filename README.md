@@ -14,7 +14,7 @@ The project follows the standard directory structure used in most Serenity proje
       + com.petstore
         + stepdefinitions           consist of class to define the action that can be done by each steps in the feature file.
         + util                      consist of classes with helper methods (Constant and DataUtils).
-        - CucumberTestSuite.java    Cucumber runner
+        - CucumberTestRunner.java   Cucumber runner
     + resources
       + features                    Feature files
       - junit-platform.properties   Here we can put all Cucumber related or Junit related settings
